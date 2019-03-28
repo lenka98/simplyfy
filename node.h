@@ -28,3 +28,5 @@ typedef struct nodetag
       opr_node on;
     };
 }node;
+
+extern int symtable[26];

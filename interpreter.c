@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "node.h"
 #include "y.tab.h"
-#define MAXSYM 100
-
-int symtable[MAXSYM];
 
 int ex(node *p)
 {
@@ -31,7 +28,7 @@ int ex(node *p)
             ex(p->on.op[2]);
           return 0;
 
-        case PRINT: printf("%d", ex(p->on.op[0]));
+        case PRINT: printf("%d ", ex(p->on.op[0]));
                     return 0;
 
         case ';': ex(p->on.op[0]); return ex(p->on.op[1]);

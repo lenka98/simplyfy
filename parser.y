@@ -12,6 +12,7 @@
     void free_node (node*);
     int ex(node*);
     void yyerror(char*);
+    int symtable[26];
 %}
 
 

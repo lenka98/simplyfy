@@ -1,0 +1,4 @@
+bison -y -d parser.y
+flex scanner.l
+gcc -c y.tab.c lex.yy.c
+gcc y.tab.o lex.yy.o interpreter.c -o interpret.exe

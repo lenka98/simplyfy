@@ -3,7 +3,6 @@
   #include "y.tab.h"
   #include "node.h"
   void yyerror (char*);
-  int i = 0;
 %}
 
 
@@ -17,7 +16,7 @@ digit [0-9]
 "while" {return WHILE;}
 "print" {return PRINT;}
 
-{letter}({letter}|{digit})*   {yylval.idx = i; i++; return VAR;}
+{letter}({letter}|{digit})*   {yylval.idx = *yytext - 'a'; return VAR;}
 
 0   {yylval.val = atoi(yytext); return INTEGER;}
 [1-9][0-9]*   {yylval.val = atoi(yytext); return INTEGER;}
@@ -32,7 +31,7 @@ digit [0-9]
 [ \t]+    ;
 
 ;   {return DELIM;}
-\n    {yylineno++; return DELIM;}
+\n    {yylineno++;}
 
 .   yyerror("Unknown literal\n");
 
